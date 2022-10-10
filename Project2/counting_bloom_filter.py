@@ -12,13 +12,13 @@ def multiplication_hash(m, flowid, A=0.314):
     h = math.floor(m*((flowid*A)%1))
     return h
 
-# Function to generate the list of size 'n' of unique flowid's in the range of [0 and m]
-def gen_flows(m, set_size):
-    flows = random.sample(range(1, m), set_size)
+# Function to generate the list of size 'n' of unique flowid's in the range of [start and end]
+def gen_flows(start,end, set_size):
+    flows = random.sample(range(start, end), set_size)
     return flows
 
 # This is to generate d random numbers to generate multiple hash function using XOR
-randomnums = random.sample(range(1, m), k)
+randomnums = random.sample(range(100, 1000*m), k)
 bit_map = [0]*m
 
 # Function will encode all the elements of the array into the bit_map
@@ -50,13 +50,9 @@ def lookup_cntbf(array):
             count += 1
     return count
 
-# This is to generate d random numbers to generate multiple hash function using XOR
-randomnums = random.sample(range(1, m), k)
-bit_map = [0]*m
-
-A = gen_flows(m,n)
+A = gen_flows(1,m,n)
 encode_cntbf(A)
 remove_cntbf(A, r)
-B = gen_flows(m,a)
+B = gen_flows(1000*m,10000*m,a)
 encode_cntbf(B)
 print("The number of elements found from Set A: ",lookup_cntbf(A))

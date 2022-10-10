@@ -12,14 +12,14 @@ def multiplication_hash(m, flowid, A=0.314):
     h = math.floor(m*((flowid*A)%1))
     return h
 
-# Function to generate the list of size 'n' of unique flowid's in the range of [0 and m]
-def gen_flows(m, set_size):
-    flows = random.sample(range(1, m), set_size)
+# Function to generate the list of size 'n' of unique flowid's in the range of [start and end]
+def gen_flows(start,end, set_size):
+    flows = random.sample(range(start, end), set_size)
     return flows
 
 # A and B are two sets of randomly generated elements of size n
-A = gen_flows(m,n)
-B = gen_flows(m,n)
+A = gen_flows(1,m,n)
+B = gen_flows(100*m,1000*m,n)
 
 # This is to generate d random numbers to generate multiple hash function using XOR
 randomnums = random.sample(range(1, m), k)

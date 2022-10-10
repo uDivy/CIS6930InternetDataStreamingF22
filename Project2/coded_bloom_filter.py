@@ -12,9 +12,9 @@ def multiplication_hash(m, flowid, A=0.314):
     h = math.floor(m*((flowid*A)%1))
     return h
 
-# Function to generate the list of size 'n' of unique flowid's in the range of [0 and m]
-def gen_flows(m, set_size):
-    flows = random.sample(range(1, m), set_size)
+# Function to generate the list of size 'n' of unique flowid's in the range of [start and end]
+def gen_flows(start, end, set_size):
+    flows = random.sample(range(start, end), set_size)
     return flows
 
 # g_set is the dictionary whose keys are of type "001", binary value corresponding to its location
@@ -25,9 +25,9 @@ base = str(int(math.ceil(math.log2(g + 1))))
 keys = [format((i + 1), "0" + base + "b") for i in range(g)]
 g_set = {}
 for i in range(g):
-    g_set[keys[i]] = random.sample(range(start, end + 1), n)
-    start = end + 1
-    end = end + n
+    g_set[keys[i]] = gen_flows(start, end+1, n)
+    start = 1000*end + 1
+    end = 1000*end + n
 
 # b_set is the dictionary whose keye are in the range [1, f]
 # and its values is the list of 0's of given bit size eg. 30000
