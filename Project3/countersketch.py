@@ -64,7 +64,7 @@ def query(estimated_flow_size):
             if bin(h)[-1] == "1":
                 temp.append(counter_arr[key][h])
             else:
-                temp.append(-counter_arr[key][h])
+                temp.append(-1*counter_arr[key][h])
 
             j += 1
         estimated_flow_size[i] = median(temp)
@@ -87,7 +87,7 @@ def estimate_error(estimated_flow_size, stat):
         flows_div = flows.split()
         flowid = flows_div[0]
         count = flows_div[1]
-        #         print(f"The true flow size is {count} and estimated flow size is {estimated_flow_size[i]} for id: {flowid}")
+        # print(f"The true flow size is {count} and estimated flow size is {estimated_flow_size[i]} for id: {flowid}")
         error += abs(estimated_flow_size[i] - int(count))
         stat.append([flowid, estimated_flow_size[i], int(count)])
         i += 1
