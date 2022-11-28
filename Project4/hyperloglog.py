@@ -16,7 +16,7 @@ def encode(array, tf):
 
 def lookup(array):
     data = [1/(2**array[i]) for i in range(m)]
-    query = ((1 + (1.079/m))*(m**2)*(1/sum(data)))
+    query = ((0.7213/(1 + (1.079/m)))*(m**2)*(1/sum(data)))
     return query
 
 for i in range(NumOfFlows):
